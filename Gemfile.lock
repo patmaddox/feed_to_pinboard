@@ -87,6 +87,7 @@ GEM
     multipart-post (2.0.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    pg (0.18.4)
     pinboard (0.1.1)
       httparty (= 0.11.0)
     rack (1.6.4)
@@ -163,6 +164,7 @@ DEPENDENCIES
   feedjira
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   pinboard
   rails (= 4.2.5)
   sass-rails (~> 5.0)
