@@ -63,6 +63,9 @@ GEM
       sax-machine (~> 1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -80,9 +83,12 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    pinboard (0.1.1)
+      httparty (= 0.11.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -157,6 +163,7 @@ DEPENDENCIES
   feedjira
   jbuilder (~> 2.0)
   jquery-rails
+  pinboard
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
