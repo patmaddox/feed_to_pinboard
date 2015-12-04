@@ -10,16 +10,26 @@ class Feed < ActiveRecord::Base
     self[:url] = url.gsub('feed://', 'http://') if url
   end
 
+  def feed
+    @feed ||= Feedjira::Feed.fetch_and_parse(url)
+  end
+
+  def latest_entries
+    last_modified ? entries.select {|e| e.last_modified > last_modified } : entries
+  end
+
   def entries
-    @entries ||= Feedjira::Feed.fetch_and_parse(url).entries
+    feed.entries
   end
 
   def post_to_pinboard
     pinboard = Pinboard::Client.new(token: Token.default.token)
 
-    entries.each do |e|
+    latest_entries.each do |e|
       pinboard.add url: e.url, description: e.title
     end
+
+    update_attribute :last_modified, feed.last_modified
   end
 
   def validate_parseable
