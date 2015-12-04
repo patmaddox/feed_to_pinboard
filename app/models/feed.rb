@@ -26,7 +26,7 @@ class Feed < ActiveRecord::Base
     pinboard = Pinboard::Client.new(token: Token.default.token)
 
     latest_entries.each do |e|
-      pinboard.add url: e.url, description: e.title
+      pinboard.add url: e.url, description: e.title, toread: read_later
     end
 
     update_attribute :last_modified, feed.last_modified
