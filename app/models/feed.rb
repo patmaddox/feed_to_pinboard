@@ -11,8 +11,10 @@ class Feed < ActiveRecord::Base
   end
 
   def post_to_pinboard
+    pinboard = Pinboard::Client.new(token: Token.default.token)
+
     entries.each do |e|
-      p e
+      pinboard.add url: e.url, description: e.title
     end
   end
 
