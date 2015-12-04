@@ -2,6 +2,10 @@ class Feed < ActiveRecord::Base
   validates :url, presence: true
   validate  :validate_parseable
 
+  def self.post_all_to_pinboard
+    all.each(&:post_to_pinboard)
+  end
+
   def url=(url)
     self[:url] = url.gsub('feed://', 'http://') if url
   end
