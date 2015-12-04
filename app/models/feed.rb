@@ -1,5 +1,5 @@
 class Feed < ActiveRecord::Base
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
   validate  :validate_parseable
 
   def self.post_all_to_pinboard
